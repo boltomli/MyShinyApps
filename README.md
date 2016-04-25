@@ -8,4 +8,7 @@ https://boltomli.shinyapps.io/24resolver/
 https://boltomli.shinyapps.io/similarity/
 
 ## Predict Y value by linear regression
-https://boltomli.shinyapps.io/lm-predict
+https://boltomli.shinyapps.io/lm-predict/
+
+## Summary and Plot
+https://beta.rstudioconnect.com/boltomli/SummaryOfNumbers/
