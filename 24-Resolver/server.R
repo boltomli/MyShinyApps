@@ -8,7 +8,7 @@ shinyServer(
                 as.double(input$c),
                 as.double(input$d))
       goal <- as.double(input$t)
-      ops <- c("+", "-", "*", "/", "^")
+      ops <- c(unlist(strsplit(input$o, "")))
       
       result <- "DONE"
       val.perms <- as.data.frame(t(
@@ -35,7 +35,7 @@ shinyServer(
               expr <- expr[ -(ord.perm[i]+1) ]
             }
             if (identical(eval(expr[[1]]), goal))
-              return(deparse(expr[[1]])) # result = paste(c(deparse(expr[[1]]), result), sep = "<br />")
+            result = paste(c(deparse(expr[[1]]), "<br />", result))
           }
       
       return(result)})

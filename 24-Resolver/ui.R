@@ -30,6 +30,13 @@ shinyUI(fluidPage(
                         value = 24))
   ),
   
+  fluidRow(
+    column(3, 
+           textInput("o", 
+                        label = h3("Operators"), 
+                        value = "+-*/^"))
+  ),
+  
   mainPanel(
     h3(htmlOutput("result"))
   )
