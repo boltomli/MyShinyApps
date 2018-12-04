@@ -1,14 +1,19 @@
 # MyShinyApps
-R apps that run on shinyapps.io
+
+R apps that run on Shiny Apps or RStudio Connect
 
 ## 24 game resolver
-https://boltomli.shinyapps.io/24resolver/
+
+<https://boltomli.shinyapps.io/24resolver/>
 
 ## Calculate string Levenshtein distance
-https://boltomli.shinyapps.io/similarity/
+
+<https://boltomli.shinyapps.io/similarity/>
 
 ## Predict Y value by linear regression
-https://boltomli.shinyapps.io/lm-predict/
+
+<https://boltomli.shinyapps.io/lm-predict/>
 
 ## Summary and Plot
-https://beta.rstudioconnect.com/boltomli/SummaryOfNumbers/
+
+<https://beta.rstudioconnect.com/boltomli/SummaryOfNumbers/>
