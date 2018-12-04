@@ -17,3 +17,7 @@ R apps that run on Shiny Apps or RStudio Connect
 ## Summary and Plot
 
 <https://beta.rstudioconnect.com/boltomli/SummaryOfNumbers/>
+
+## Homophones in Cantonese Chinese
+
+<https://beta.rstudioconnect.com/content/4462/>
