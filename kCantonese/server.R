@@ -5,6 +5,7 @@ shinyServer(
     load("kCantonese.rda")
     pronunciations <- reactive({
       zi <- trimws(input$zi)[[1]]
+      zi <- substr(zi, start = nchar(zi), stop = nchar(zi))
       cp <- toupper(sprintf("%x", as.numeric(stri_enc_toutf32(zi))))
       strsplit(as.character(kCantonese[which(kCantonese$cp == cp), ]$kCantonese), " ")[[1]]
     })
