@@ -21,3 +21,7 @@ R apps that run on Shiny Apps or RStudio Connect
 ## Homophones in Cantonese Chinese
 
 <https://beta.rstudioconnect.com/content/4462/>
+
+## Add progress bar to GIF
+
+Leverage https://github.com/nwtgck/gif-progress
