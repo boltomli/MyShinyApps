@@ -1,13 +1,26 @@
 library(shiny)
 library(curl)
 
-ui <- basicPage(
-  imageOutput("inAnimation"),
-  imageOutput("outAnimation"))
+ui <- fluidPage(
+  titlePanel("Add progress bar to GIF (by https://github.com/nwtgck/gif-progress)"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      textInput("inURL", "GIF URL", "https://github.com/nwtgck/ray-tracing-iow-rust/raw/develop/doc_assets/ray-tracing-animation.gif")
+    ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Original GIF", imageOutput("inAnimation")),
+        tabPanel("GIF with progress bar", imageOutput("outAnimation"))
+        )
+      )
+    )
+  )
 
 server <- function(input, output) {
+  url <- reactive({input$inURL})
   output$inAnimation <- renderImage({
-    curl_download('https://github.com/nwtgck/ray-tracing-iow-rust/raw/develop/doc_assets/ray-tracing-animation.gif', 'infile.gif')
+    curl_download(url(), 'infile.gif')
     
     # Return a list containing the filename
     list(src = "infile.gif",
