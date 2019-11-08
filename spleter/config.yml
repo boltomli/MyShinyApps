@@ -1,0 +1,2 @@
+default:
+  audio_example: "https://github.com/deezer/spleeter/raw/master/audio_example.mp3"

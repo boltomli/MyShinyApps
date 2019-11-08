@@ -25,3 +25,7 @@ R apps that run on Shiny Apps or RStudio Connect
 ## Add progress bar to GIF
 
 Leverage https://github.com/nwtgck/gif-progress
+
+## Separate vocals and accompaniment from audio
+
+<https://beta.rstudioconnect.com/content/7147/>
