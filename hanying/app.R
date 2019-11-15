@@ -117,15 +117,14 @@ server <- function(input, output) {
     output$funny_result <- renderTable({
         req(dict_tone())
         if (dict_tone() == "toneless") {
-            req(dict_data())
-            text <- py(input$text, sep = "", dic = dict_data())
+            text <- input$text
 
             ssml <- newXMLDoc()
             ns <- c(xml = "http://www.w3.org/2000/xmlns")
             speak <- newXMLNode("speak", namespace = ns)
-            addAttributes(speak, "version" = "1.0", "xml:lang" = "en-us")
+            addAttributes(speak, "version" = "1.0", "xml:lang" = "zh-cn")
             voice <- newXMLNode("voice", namespace = ns)
-            addAttributes(voice, "xml:lang" = "en-us", "xml:gender" = "Male", "name" = "Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)")
+            addAttributes(voice, "xml:lang" = "zh-cn", "xml:gender" = "Female", "name" = "Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS)")
             textNode <- newXMLTextNode(text = text)
             addChildren(voice, textNode)
             addChildren(speak, voice)
@@ -142,7 +141,7 @@ server <- function(input, output) {
             synthesisResult <- POST(ttsUri,
                                     content_type("application/ssml+xml"),
                                     add_headers(
-                                        "X-Microsoft-OutputFormat" = "riff-24khz-16bit-mono-pcm",
+                                        "X-Microsoft-OutputFormat" = "riff-16khz-16bit-mono-pcm",
                                         "Authorization" = paste("Bearer ", token),
                                         "X-Search-AppId" = "07D3234E49CE426DAA29772419F436CA",
                                         "X-Search-ClientID" = "1ECFAE91408841A480F00935DC390960"
