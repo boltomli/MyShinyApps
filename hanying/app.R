@@ -1,6 +1,7 @@
 library(pinyin)
 library(XML)
 library(httr)
+library(jsonlite)
 library(shiny)
 
 ui <- fluidPage(
@@ -19,7 +20,7 @@ ui <- fluidPage(
 
             textInput("text", "text to convert:", "文本"),
 
-            textInput("sep", "separator to separate text:", ""),
+            textInput("sep", "separator to separate text:", " "),
 
             tags$hr(),
             helpText("View", a("source code on GitHub", href="https://github.com/boltomli/MyShinyApps", target="_blank")),
@@ -29,7 +30,9 @@ ui <- fluidPage(
         mainPanel(
 
             textOutput("convert_result"),
-            textOutput("funny_result"),
+
+            tags$hr(),
+            tableOutput("funny_result"),
 
         )
     )
@@ -95,7 +98,7 @@ server <- function(input, output) {
         req(input$file1)
         tryCatch({
             # Fetch image from URL
-            temp_fetch_url <- fs::file_temp('custom', ext = ".dict")
+            temp_fetch_url <- fs::file_temp("custom", ext = ".dict")
             downloader::download(input$file1, temp_fetch_url)
             
             dict_path(temp_fetch_url)
@@ -111,11 +114,11 @@ server <- function(input, output) {
         py(input$text, sep = input$sep, dic = dict_data())
     })
 
-    output$funny_result <- renderText({
+    output$funny_result <- renderTable({
         req(dict_tone())
         if (dict_tone() == "toneless") {
             req(dict_data())
-            text <- py(input$text, sep = ' ', dic = dict_data())
+            text <- py(input$text, sep = "", dic = dict_data())
 
             ssml <- newXMLDoc()
             ns <- c(xml = "http://www.w3.org/2000/xmlns")
@@ -128,14 +131,14 @@ server <- function(input, output) {
             addChildren(speak, voice)
             addChildren(ssml, speak)
 
-            issueTokenUri <- config::get("token_url");
+            issueTokenUri <- config::get("token_url")
             key <- config::get("subscription_key")
             tokenResult <- POST(issueTokenUri,
                                 add_headers("Ocp-Apim-Subscription-Key" = key),
                                 body = "")
             token <- content(tokenResult, as = "text")
 
-            ttsUri <- config::get("tts_url");
+            ttsUri <- config::get("tts_url")
             synthesisResult <- POST(ttsUri,
                                     content_type("application/ssml+xml"),
                                     add_headers(
@@ -150,15 +153,18 @@ server <- function(input, output) {
             writeBin(con = pcmfile, object = synthesis)
             close(pcmfile)
 
-            sttUri <- config::get("stt_url");
+            sttUri <- config::get("stt_url")
             recognizedResult <- POST(sttUri,
                                      add_headers(
-                                       "X-Microsoft-OutputFormat" = "riff-24khz-16bit-mono-pcm",
-                                       "Authorization" = paste("Bearer ", token),
-                                       "Content-Type" = "audio/wav; codecs=audio/pcm; samplerate=16000",
+                                       "Ocp-Apim-Subscription-Key" = key,
+                                       "Content-Type" = "audio/wav; codecs=audio/pcm; samplerate=16000"
                                      ),
-                                     body = upload_file("temp.wav", type = "audio/wav; codecs=audio/pcm; samplerate=16000"))
-            # TODO
+                                     body = upload_file("temp.wav"))
+
+            resultJSON <- fromJSON(content(recognizedResult, as = "text"))
+            if (resultJSON$RecognitionStatus == "Success") {
+                resultJSON$NBest
+            }
         }
     })
 }
