@@ -1,0 +1,2 @@
+default:
+  dict_example: "https://github.com/pzhaonet/pinyin/raw/master/inst2/wubi86.txt"
