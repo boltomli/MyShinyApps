@@ -1,2 +1,6 @@
 default:
   dict_example: "https://github.com/pzhaonet/pinyin/raw/master/inst2/wubi86.txt"
+  token_url: "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
+  tts_url: "https://westus.tts.speech.microsoft.com/cognitiveservices/v1"
+  stt_url: "https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed&profanity=raw"
+  subscription_key: "my_key"
