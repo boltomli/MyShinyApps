@@ -18,7 +18,7 @@ R apps that run on Shiny Apps or RStudio Connect
 
 <https://beta.rstudioconnect.com/boltomli/SummaryOfNumbers/>
 
-## Homophones in Cantonese Chinese
+## Homophones
 
 <https://beta.rstudioconnect.com/content/4462/>
 
