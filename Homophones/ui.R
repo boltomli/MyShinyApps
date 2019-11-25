@@ -1,18 +1,19 @@
 shinyUI(fluidPage(
-  titlePanel("同音字 - 读音来自 https://www.unicode.org/charts/unihan.html，遵守 http://www.unicode.org/copyright.html"),
-  fluidRow(
-    column(3,
-           textInput("zi",
-                     label = h3("输入单个汉字"),
-                     value = "好"
-                     ))
+  titlePanel("同音字"),
+  sidebarLayout(
+    sidebarPanel(
+       textInput("zi",
+                 label = h3("输入单个汉字"),
+                 value = "好"),
+       selectInput("lang", "选择一个语言或方言：",
+                   choices = c("汉语（普通话 / Mandarin）", "汉语（粤语 / Cantonese）", "韩语（Korean / Hangul）")),
+     ),
+    mainPanel(
+      htmlOutput("pronunciation"),
+      htmlOutput("result"),
+      tags$hr(),
+      helpText("读音来源", a("Unihan", href="https://www.unicode.org/charts/unihan.html", target="_blank")),
+      helpText("遵守", a("Unicode terms of use", href="https://www.unicode.org/copyright.html", target="_blank")),
+    ),
   ),
-  mainPanel(
-    h2("Yue"),
-    h3(htmlOutput("pronunciationC")),
-    h3(htmlOutput("resultC")),
-    h2("Hangul"),
-    h3(htmlOutput("pronunciationK")),
-    h3(htmlOutput("resultK"))
-  )
 ))
