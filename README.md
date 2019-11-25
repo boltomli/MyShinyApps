@@ -20,7 +20,7 @@ R apps that run on Shiny Apps or RStudio Connect
 
 ## Homophones
 
-<https://beta.rstudioconnect.com/content/4462/>
+<https://beta.rstudioconnect.com/content/7520/>
 
 ## Add progress bar to GIF
 
