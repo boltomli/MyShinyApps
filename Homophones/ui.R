@@ -1,5 +1,5 @@
 shinyUI(fluidPage(
-  titlePanel("粤语同音字 - 读音来自 http://www.unicode.org/charts/unihan.html"),
+  titlePanel("同音字 - 读音来自 https://www.unicode.org/charts/unihan.html，遵守 http://www.unicode.org/copyright.html"),
   fluidRow(
     column(3,
            textInput("zi",
@@ -8,7 +8,11 @@ shinyUI(fluidPage(
                      ))
   ),
   mainPanel(
-    h3(htmlOutput("pronunciation")),
-    h3(htmlOutput("result"))
+    h2("Yue"),
+    h3(htmlOutput("pronunciationC")),
+    h3(htmlOutput("resultC")),
+    h2("Hangul"),
+    h3(htmlOutput("pronunciationK")),
+    h3(htmlOutput("resultK"))
   )
 ))
