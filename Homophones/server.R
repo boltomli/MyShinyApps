@@ -24,7 +24,7 @@ shinyServer(
     characters <- reactive({
       req(pronunciations())
       zi_same_p <- unlist(lapply(pronunciations(), function(x) {
-        Unihan_Readings$code[which(grepl(as.character(x), Unihan_Readings$value, fixed = TRUE) & Unihan_Readings$key == lang_input())]}))
+        Unihan_Readings$code[which(sapply(strsplit(as.character(Unihan_Readings$value), " ", fixed = TRUE), function(x, y) y %in% x, x) & Unihan_Readings$key == lang_input())]}))
       unlist(lapply(as.list(zi_same_p), function(x) {
         u_char_inspect(as.character(x))['Char']
       }))
