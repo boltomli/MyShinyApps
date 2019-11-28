@@ -3,7 +3,7 @@ import shutil
 import subprocess
 
 from spleeter.separator import Separator
-from spleeter.utils.audio.adapter import get_default_audio_adapter
+from spleeter.audio.adapter import get_default_audio_adapter
 
 os.environ['PATH'] = os.environ['PATH']+':.'
 
