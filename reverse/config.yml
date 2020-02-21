@@ -1,0 +1,4 @@
+default:
+  token_url: "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
+  tts_url: "https://westus.tts.speech.microsoft.com/cognitiveservices/v1"
+  subscription_key: "key"
