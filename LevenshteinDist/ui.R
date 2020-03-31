@@ -1,5 +1,5 @@
 shinyUI(fluidPage(
-  titlePanel("Similarity score between two strings - https://en.wikipedia.org/wiki/Levenshtein_distance"),
+  titlePanel("Similarity score between two strings"),
   fluidRow(
     
     column(3,
@@ -14,6 +14,9 @@ shinyUI(fluidPage(
     ),
 
   mainPanel(
-    h3(textOutput("result"))
+    textOutput("result"),
+    tags$hr(),
+    helpText("Similarity between 1 (the same) and 0 (totally different) = 1 - ", a("Levenshtein distance", href="https://en.wikipedia.org/wiki/Levenshtein_distance")),
+    helpText("View", a("source code on GitHub", href="https://github.com/boltomli/MyShinyApps"))
   )
 ))
