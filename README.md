@@ -6,7 +6,7 @@ R apps that run on Shiny Apps or RStudio Connect
 
 <https://boltomli.shinyapps.io/24resolver/>
 
-## Calculate string Levenshtein distance
+## Calculate similarity of 2 strings
 
 <https://boltomli.shinyapps.io/similarity/>
 
