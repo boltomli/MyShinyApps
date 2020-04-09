@@ -21,7 +21,8 @@ ui <- fluidPage(
 
             imageOutput("text_handwriting_image"),
             tags$hr(),
-            helpText("Handwriting style simulated with", a("handright", href="https://github.com/Gsllchb/Handright", target="_blank"))
+            helpText("Handwriting style simulated with", a("handright", href="https://github.com/Gsllchb/Handright", target="_blank")),
+            helpText("Embeded font 沐目体", a("MMT", href="https://github.com/Lruihao/MMT", target="_blank"), "for personal non-commercial use only")
 
         )
     )

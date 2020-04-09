@@ -13,6 +13,4 @@ Open in RStudio, open `app.R` to develop and run the app.
 
 None yet.
 
-## Note
-
-Need a TrueType font with proper license to deploy this online. Handwriting style is preferred.
+Embedding font [沐目体 MMT](https://github.com/Lruihao/MMT) which is for personal non-commercial use only (仅用于个人非商用).
