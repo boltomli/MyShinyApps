@@ -1,6 +1,6 @@
 # Say Something in Reverse
 
-## Develop ond run
+## Develop and run
 
 Open in RStudio, open `app.R` to develop and run the app.
 
