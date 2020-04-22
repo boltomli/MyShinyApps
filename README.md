@@ -24,8 +24,12 @@ R apps that run on Shiny Apps or RStudio Connect
 
 ## Separate vocals and accompaniment from audio
 
-<https://beta.rstudioconnect.com/content/7147/>
+Not deployed.
 
 ## View text in handwriting style
 
 <https://beta.rstudioconnect.com/content/9371>
+
+## Text to speech
+
+<https://github.com/boltomli/shiny-speech>
