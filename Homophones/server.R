@@ -7,7 +7,7 @@ shinyServer(
 
     lang_input <- reactive({
       switch (input$lang,
-        "汉语（普通话 / Mandarin）" = "kHanyuPinyin",
+        "汉语（普通话 / Mandarin）" = "kMandarin",
         "汉语（粤语 / Cantonese）" = "kCantonese",
         "韩语（Korean / Hangul）" = "kKorean",
         "日语（Japanese / On）" = "kJapaneseOn",
