@@ -3,7 +3,7 @@ shinyServer(
     library(stringi)
     library(Unicode)
 
-    Unihan_Readings <- read.delim("Unihan_Readings.txt", header=FALSE, comment.char="#", stringsAsFactors=FALSE, col.names = c("code", "key", "value"))
+    Unihan_Readings <- read.delim("raw/Unihan_Readings.txt", header=FALSE, comment.char="#", stringsAsFactors=FALSE, col.names = c("code", "key", "value"))
 
     lang_input <- reactive({
       switch (input$lang,
