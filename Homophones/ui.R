@@ -5,8 +5,7 @@ shinyUI(fluidPage(
        textInput("zi",
                  label = h3("输入单个汉字"),
                  value = "好"),
-       selectInput("lang", "选择一个语言或方言：",
-                   choices = c("韩语（Korean / Hangul）", "汉语（普通话 / Mandarin）", "汉语（粤语 / Cantonese）", "日语（Japanese / On）")),
+       uiOutput("lang_selector"),
      ),
     mainPanel(
       htmlOutput("pronunciation"),
