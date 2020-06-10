@@ -8,7 +8,7 @@ types <- sort(unique(Unihan_Readings$key))
 write.table(types, paste0(data_dir, "types.csv"), quote = F, row.names = F, col.names = F)
 
 chars <- u_char_inspect(Unihan_Readings$code)
-write.table(unique(data.frame(chars$Char, Unihan_Readings$code)), paste0(data_dir, "chars.csv"), quote = F, row.names = F, col.names = F)
+write.table(unique(data.frame(chars$Char, Unihan_Readings$code)), paste0(data_dir, "chars.csv"), quote = F, row.names = F, col.names = c("Char", "Code"))
 
 for (k in types) {
   write.table(Unihan_Readings[Unihan_Readings$key == k, c("code", "value")], paste0(data_dir, k, ".csv"), quote = F, row.names = F, col.names = F, sep = "|")
