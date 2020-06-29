@@ -36,7 +36,7 @@ server <- function(input, output, session) {
         list(src = "saved.webp",
              contentType = "image/webp",
              alt = text)
-    })
+    }, deleteFile = T)
 }
 
 shinyApp(ui = ui, server = server)
