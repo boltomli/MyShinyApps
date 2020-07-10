@@ -14,3 +14,11 @@ providers = {
 
 def list_providers():
     return list(providers.keys())
+
+
+def translate(text, provider, use_cn_host=True, from_language='en', to_language='zh'):
+    try:
+        result = providers[provider](text, from_language=from_language, to_language=to_language, if_use_cn_host=use_cn_host)
+    except:
+        result = provider + " no result"
+    return result
