@@ -30,16 +30,18 @@ server <- function(input, output, session) {
     
     output$availableProviders <- renderUI({
         providers <- list_providers()
-        checkboxGroupInput("providers", label = "Provider", choices = providers, selected = providers)
+        checkboxGroupInput("providers", label = "Provider", choices = providers)
     })
 
     output$translateWithSelectedProviders <- renderTable({
-        providers <- input$providers
-        translations <- sapply(providers, function(x) translate(input$text, x, use_cn_host=TRUE))
-        result <- data.frame(providers, translations)
-        colnames(result) <- c("Provider", "Translation")
-        result
-    }, colnames = F)
+        if (input$text != "") {
+            providers <- input$providers
+            translations <- sapply(providers, function(x) translate(input$text, x, use_cn_host=TRUE))
+            result <- data.frame(providers, translations)
+            colnames(result) <- c("Provider", "Translation")
+            result
+        }
+    })
 
 }
 
