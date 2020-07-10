@@ -19,7 +19,8 @@ ui <- fluidPage(
         
         mainPanel(
 
-            tableOutput("selectedProviders")
+            textAreaInput("text", "Text to translate", resize = "vertical"),
+            tableOutput("translateWithSelectedProviders")
 
         )
     )
@@ -28,11 +29,16 @@ ui <- fluidPage(
 server <- function(input, output, session) {
     
     output$availableProviders <- renderUI({
-        checkboxGroupInput("providers", label = "Provider", choices = list_providers())
+        providers <- list_providers()
+        checkboxGroupInput("providers", label = "Provider", choices = providers, selected = providers)
     })
 
-    output$selectedProviders <- renderTable({
-        input$providers
+    output$translateWithSelectedProviders <- renderTable({
+        providers <- input$providers
+        translations <- sapply(providers, function(x) translate(input$text, x, use_cn_host=TRUE))
+        result <- data.frame(providers, translations)
+        colnames(result) <- c("Provider", "Translation")
+        result
     }, colnames = F)
 
 }
