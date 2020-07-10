@@ -11,7 +11,7 @@ ui <- fluidPage(
 
         sidebarPanel(
 
-            uiOutput("providers"),
+            uiOutput("availableProviders"),
             tags$hr(),
             helpText("View", a("source code on GitHub", href="https://github.com/boltomli/MyShinyApps", target="_blank")),
 
@@ -19,7 +19,7 @@ ui <- fluidPage(
         
         mainPanel(
 
-            #textInput("text"),
+            tableOutput("selectedProviders")
 
         )
     )
@@ -27,9 +27,13 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
     
-    output$providers <- renderUI({
-        checkboxGroupInput("provider", label = "Provider", choices = list_providers())
+    output$availableProviders <- renderUI({
+        checkboxGroupInput("providers", label = "Provider", choices = list_providers())
     })
+
+    output$selectedProviders <- renderTable({
+        input$providers
+    }, colnames = F)
 
 }
 
